@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="text-center" style="margin-top: 20px;">
+
+    <h2>General Volcano/Meteor Blog</h2>
+
+</div>
+
+<div class="card-body">
+  <a href="{{ url_for('blog.start_blog') }}" class="btn btn-outline-secondary">Back</a>
+</div>
+
+
+
+
+<div class="content">
+    
+            
+                <div class="card mb-3" style="width: 50rem; margin: auto; padding: 1% 1% 1% 1%; border: outset;">
+                    <div class="row g-0">
+                      <div class="col-md-1">
+                        <img src="{{avatar}}" class="mr-3 rounded-circle" width="50">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ post.title }}</h5>
+                          <p class="card-text">{{ post.post }}</p>
+                          <p class="card-text"><small class="text-muted"> <a class=""href="{{ url_for('main.profile', username=post.poster.username) }}">By {{ post.poster.username }}</a></small></p>
+                          <p class="card-text"><small class="text-muted">   {{ post.poster.first_name }} {{ post.poster.last_name }}</small></p>
+                          <p class="card-text"><small class="text-muted">   {{ post.poster.email }}</small></p>
+                          <p class="card-text"><small class="text-muted" class="text-right"> on {{ post.date.strftime('%d-%m-%Y') }}</small></p>
+                          {% if current_user.username == post.poster.username %}
+                          <p class="card-text"><small class="text-muted"> <a class=""href="{{ url_for('blog.delete_post', post_id=post.id)}}" method="POST">Delete Post</a></small></p>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br/>
+
+{% endblock %} 

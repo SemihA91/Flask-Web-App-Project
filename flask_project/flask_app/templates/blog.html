@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="text-center" style="margin-top: 20px;">
+
+  <h2 id="heading">General Volcano/Meteor Blog</h2>
+
+  <br />
+  
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-">
+      
+
+      
+      <div class="card-body">
+        <a href="{{ url_for('blog.make_post')}}" class="btn btn-outline-success">New Post</a>
+      </div>
+
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sort order
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item"  href="{{ url_for('blog.start_blog')}}">Oldest first</a>
+          <a class="dropdown-item" href="{{ url_for('blog.reverse_blog')}}">Newest first</a>
+        <br/>
+        </div>
+        </div>
+
+        
+    </div>
+    <div class="col-xl">
+      <div class="content">
+
+        {% for post in posts %}
+        <div class="card mb-3" style="width: 75%; margin: auto; padding: 1% 1% 1% 1%; border: outset;">
+          <div class="row g-0">
+            <div class="col-md-1">
+              <img src="{{post.poster.avatar}}" class="mr-3 rounded-circle" width="50">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title" href="{{ url_for('blog.post_id', post_id=1) }}">{{ post.title }}</h5>
+                <p class="card-text">{{ post.post }}</p>
+                <p class="card-text"><small class="text-muted"> <a class=""
+                      href="{{ url_for('main.profile', username=post.poster.username) }}">By {{ post.poster.username }}</a>
+                    on {{ post.date.strftime('%d-%m-%Y') }}</small></p>
+                <a href="{{ url_for('blog.post_id', post_id=post.id) }}"> Expand Post </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <br />
+      
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+
+  {% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+            {% for message in messages %}
+            <div style="color: red; font-size: 20pt; margin-left: 20px;">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <br>
+    <div class="container">
+        <div style="overflow: auto;">
+            <h2 style="font-size:2vw;">Welcome to our Meteorite and Volcano information page!!</h2>
+            <br>
+            <div style="width: 50%; float: left; padding-right: 20px; padding-top: 0.5%;">
+                <img src="https://s.w-x.co/tomasvdwvolcanopic.jpg" style="max-width: 100%; max-height: 100%;">
+                <figcaption style="text-align: center; font-size:1.5vw;">
+                    Volcano eruption reflected on a lake
+                </figcaption>
+            </div>
+            <div style="width: 50%; float: right;" >
+                <h4 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:1.5vw;">
+                    This blog is for all meteorite and volcano enthusiasts!! On this website, 
+                    you can get all the necessary information on meteor landing and volcano 
+                    eruption sites. We have data going from 1950 to 2020.
+                </h4>
+                <h4 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:1.5vw;">
+                    If you would like to know more and visualise our data, we recommend you
+                    look at our data visualisation page. 
+                </h4>
+                <h4 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:1.5vw;">
+                    If you want to visit our forum and connect with other volcano lovers, don't
+                    hesitate to <a href="{{ url_for('auth.signup') }}">sign up!</a>
+                </h4>
+            </div>
+        </div>
+        <div>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-6">
+                  <div class="card">
+                        <img src="../static/images/dash_app.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Data visualisation page</h5>
+                            <p class="card-text">An amazing data visualisation page made using python dash!</p>
+                            <a href="/dash" class="btn btn-primary">Go to data viz</a>
+                        </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                    <img src="../static/images/blog.png" class="card-img-top" alt="...">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Forum page</h5>
+                            <p class="card-text">Forum page to connect with other users! </p>
+                            <a href="{{ url_for('blog.start_blog') }}" class="btn btn-primary">Go to forum</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+
+
+    <div class="text-center" style="margin-top: 20px;">
+
+        <img src= {{advertisement}} class="img-fluid" alt="Advert" >
+        <br /><br /><br />
+        
+      </div>
+
+
+    {% if current_user.username == "admin" %}
+
+
+    <div class="text-center" style="margin-top: 20px;">
+
+        <div class="card-body">
+            <a href="{{ url_for('main.delete_ad')}}" class="btn btn-outline-success">Delete ad</a>
+          </div>
+        
+      </div>
+    
+
+        <div class="container" style="padding: 10px">
+            <form action="{{ url_for('main.index', username=name) }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Choose advert</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="image">
+                        <label class="custom-file-label" for="image">Browse for Image, must be .png or .jpg/.jpeg</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary"
+                    style="background-color: gray; border-color: black;">Upload</button>
+            </form>
+        </div>
+    {% endif %}
+
+    
+
+{% endblock %} 

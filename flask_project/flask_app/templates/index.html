@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="jumbotron">
+    <h1 class="display-4">
+            Volcano/ Meteorite Blog
+</h1>
+</div>
+
+<div class="content">
+    
+            {% for post in posts %}
+
+
+              <div class="card">
+                <div class="card-body">
+                    <h1>{{ post.title}}</h1>
+                    <p>By {{ post.author }} on {{ post.date }}</p> 
+                     <p>{{ post.content }} </p>
+                <br/>
+                  </div>
+                
+
+            </div>
+            
+                
+            {% endfor %}
+</div>
+{% endblock %} 

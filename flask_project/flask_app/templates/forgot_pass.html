@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+    <div>
+        <br>
+        {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+            {% for message in messages %}
+            <div style="color: red; font-size: 20pt;">
+                {{ message }}.</a>.
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <br>
+        <div class="card-body">
+            <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary">Log in</a>
+          </div>
+        <div style="height: 400px; width: 750px; margin: auto; padding: 3% 5% 5% 5%; border: outset;">
+            <div>
+                <h3 style="font-size: 30pt;">Reset password</h3>
+            </div>
+            <br>
+            <div>
+                <h5>Please input the email address used for your account. You will recieve an email with the necessary steps.
+                    Please check your spam if you don't recieve it.
+                </h5>
+            </div>
+            <br>
+            <form method = "POST" action="/forgot_password">
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="inputEmail" name="email" style="height: 50px;" required>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Reset password</button>
+            </form>
+        </div>      
+
+{% endblock %} 

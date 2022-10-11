@@ -1,0 +1,16 @@
+pip
+setuptools
+pandas
+dash>=2.1.0
+dash[testing]
+pytest
+dash-bootstrap-components
+dash-daq
+selenium
+pytest-cov
+requests
+flask_sqlalchemy
+flask_wtf
+email_validator
+flask_login
+flask_mail

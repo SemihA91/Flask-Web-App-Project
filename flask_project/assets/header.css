@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.app-header {
+    height: 160px;
+    background-image: url("https://s.w-x.co/tomasvdwvolcanopic.jpg");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center -200px;
+    overflow: hidden;
+}
+
+.app-header .container {
+    justify-content: center;
+    display: flex;
+    width: 700px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 5px;
+}
+
+.app-header .container image {
+    background-image: url('logo_square.png');
+    padding-top: 30px;
+    height: 90px;
+}
+
+.app-header .container h1 {
+    padding-top: 40px;
+    color: white;
+}
+
+.app-header .night-mode {
+    float: center;
+    color: white;
+    margin-top: -65px;
+    margin-left: 75%;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+/* div {
+    border: 1px solid black;
+} */

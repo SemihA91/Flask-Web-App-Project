@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+
+<!-- add validators for input -->
+{% block body %}
+    <div>
+        <br>
+        
+        <br>
+        <div style="height: 600px; width: 750px; margin: auto; padding: 4% 5% 5% 5%; border: outset;">
+            <div>
+                <h3 style="font-size: 30pt;">New Post</h3>
+            </div>
+            <br>
+            <form method = "POST" action="/blog/new">
+                <div class="mb-3">
+                    <label for="inputTitle" class="form-label" style="font-size: 16pt;">Blog Title</label>
+                    <input type="title" class="form-control" id="inputTitle" name="title" style="height: 50px;">
+                </div>
+                <div class="mb-3">
+                    <label for="inputPost" class="form-label" style="font-size: 16pt;">Post Contents</label>
+                    <textarea type="post" class="form-control" id="inputPost" name="post" rows="7"></textarea>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </div>      
+
+{% endblock %} 

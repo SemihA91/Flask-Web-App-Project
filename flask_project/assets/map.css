@@ -1,0 +1,29 @@
+.map-header {
+    /*border: 1px solid black;*/
+    overflow: hidden;
+    padding-bottom: 1%;
+    z-index: 10;
+    margin-top: -25px;
+    padding-top: 1%;
+}
+
+.map-header .button-menu {
+    margin-top: 20px;
+    /*border: 1px solid black;*/
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.map-header .mode-3D {
+    overflow: hidden;
+    margin-top: 18px;
+    /*border: 1px solid black;*/
+}
+
+.map-header .year-colours-button {
+    overflow: hidden;
+    margin-top: 18px;
+    /*border: 1px solid black;*/
+}
+

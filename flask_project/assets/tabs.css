@@ -1,0 +1,18 @@
+.container {
+    position: relative;
+    min-width: 100%;
+    /* min-height: 1000px; */
+    width: 100%;
+}
+
+.tabs {
+    width: 800px;
+    margin: auto;
+    z-index: 10;
+    margin-top: -20px;
+}
+
+.tab {
+    background-color: black;
+}
+

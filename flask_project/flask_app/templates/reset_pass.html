@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+
+<div>
+    <br>
+    <div class="card-body">
+        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary">Log in</a>
+      </div>
+    <div style="height: 550px; width: 750px; margin: auto; padding: 2% 5% 5% 5%; border: outset;">
+        <div>
+            <h3 style="font-size: 30pt;">Reset password</h3>
+        </div>
+        <br>
+        <div>
+            <h5>Please input the email address used for your account. You will recieve an email with the necessary steps.
+                Please check your spam if you don't recieve it.
+            </h5>
+        </div>
+        <br>
+        <form method = "POST" action="/reset">
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label" style="font-size: 16pt;">New password</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" style="height: 50px;" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label" style="font-size: 16pt;">Confirm new password</label>
+                <input type="password" class="form-control" id="inputPassword" name="confirm_password" style="height: 50px;" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Reset password</button>
+        </form>
+    </div>
+
+{% endblock %} 

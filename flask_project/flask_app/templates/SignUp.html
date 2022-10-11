@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <br>
+        {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+            {% for message in messages %}
+            <div style="color: red; font-size: 20pt;">
+                {{ message }}. To log in, go to <a href="{{ url_for('auth.login') }}">login page</a>.
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <br>
+        <div style="width: 60%; margin: auto; padding: 3% 5% 5% 5%; border: outset;">
+            <div>
+                <h3 style="font-size: 30pt;">Register</h3>
+            </div>
+            <br>
+            <form method = "POST" action="/signup">
+                <div style="width: 50%; float: left; padding-right: 20px;">
+                    <div class="mb-3">
+                        <label for="inputUsername" class="form-label" style="font-size: 16pt;">Username</label>
+                        <input type="text" class="form-control" id="inputUsername" name="username" style="height: 50px;" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputFirstName" class="form-label" style="font-size: 16pt;">First Name</label>
+                        <input type="text" class="form-control" id="inputFirstName" name="first name" style="height: 50px;" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputLastName" class="form-label" style="font-size: 16pt;">Last Name</label>
+                        <input type="text" class="form-control" id="inputLastName"name="last name" style="height: 50px;" required>
+                    </div>
+                </div>
+                <div style="width: 50%; float: right; padding-left: 20px;">
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label" style="font-size: 16pt;">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" style="height: 50px;" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label" style="font-size: 16pt;">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" name="password" style="height: 50px;" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label" style="font-size: 16pt;">Confirm password</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirm password" style="height: 50px;" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="register">Register</button>
+            </form>
+            <div class = "text-info" style="padding-top: 2%;">
+                <a href = "{{ url_for('auth.login') }}">Log in?</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %} 

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<br>
+<div style="position: relative; left: 20%; padding: 20px; width: 60%; word-wrap: break-word;border-style: outset ;box-shadow: inset;">
+    <h1>
+        {{name}}'s Profile
+    </h1>
+    <div style="position:relative; left:30%; width: 50%">
+        <img src={{user.avatar}} alt="Profile Picture" style="max-width: 65%; max-height: 55%;">
+    </div>
+    {% if current_user.username == user.username %}
+    <div class="container" style="padding: 10px">
+        <form action="{{ url_for('main.profile', username=name) }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Choose Profile Picture</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="image" id="image">
+                    <label class="custom-file-label" for="image">Browse for Image, must be .png or .jpg/.jpeg</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary"
+                style="background-color: gray; border-color: black;">Upload</button>
+        </form>
+    </div>
+    {% endif %}
+    <h5>
+        Email: {{email}}
+        <br>
+    </h5>
+    <div style="display:flex">
+        <div style="display:inline-block;align-self: auto ;width:25%;">
+            <h5>
+                About me:
+            </h5>
+        </div>
+        <div style="display:inline-block; width:60%; position: relative; right:5%; padding: 5px;">
+            <h6>
+                {% if about %}{{about}}{% endif %}
+            </h6>
+        </div>
+    </div>
+    {% if current_user.username == user.username %}
+    <div>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse"
+            aria-expanded="false" aria-controls="edit-about" style="background-color: gray; border-color: black">
+            Edit About Me
+        </button>
+
+        <div class="collapse multi-collapse" id="edit-about">
+            <form action="{{ url_for('main.profile', username=name) }}" method="POST">
+                <div style="width: 60%;">
+                    <textarea class="form-control" id="current-edit" name="about-text"
+                        rows="3">{% if about %}{{about}}{% endif %}</textarea>
+                </div>
+        </div>
+        <div class="collapse multi-collapse" id="confirm-button">
+            <div>
+                <button type="submit" class="btn btn-primary mb-3"
+                    style="background-color: gray; border-color: black">Confirm Changes</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    {% endif %}
+</div>
+<br>
+<div style="position: relative; left: 20%; padding: 20px; width: 60%; word-wrap: break-word;border-style: outset ;box-shadow: inset;">
+    <h5>{{user.username}}'s Blog Posts:</h5>
+    {% for post in posts %}
+    {% if post.poster.username == user.username %}
+  <div class="card mb-3" style="width: 80%; margin: auto; padding: 1% 1% 1% 1%; border: outset;">
+    <div class="row g-0">
+      <div class="col-md-1">
+        <img src="{{post.poster.avatar}}" class="mr-3 rounded-circle" width="50">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title" href="{{ url_for('blog.post_id', post_id=1) }}">{{ post.title }}</h5>
+          <p class="card-text">{{ post.post }}</p>
+          <p class="card-text"><small class="text-muted"> <a class=""
+                href="{{ url_for('main.profile', username=post.poster.username) }}">By {{ post.poster.username }}</a>
+              on {{ post.date.strftime('%d-%m-%Y') }}</small></p>
+          <a href="{{ url_for('blog.post_id', post_id=post.id) }}"> Expand Post </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  {% endif %}
+  {% endfor %}
+</div>
+<br>
+
+
+{% endblock %}
