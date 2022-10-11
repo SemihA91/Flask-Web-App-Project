@@ -1,9 +1,9 @@
-# **Coursework 2 Flask App for Volcanos and Meteorites**
+# **Flask App for Volcanos and Meteorites**
 
-[Repository URL](https://github.com/ucl-comp0035/comp0034-cw-group-14)
+This repository contains the code for a Flask Web app completed as part of a group project for an IEP Minor is Software Engineering and Applicaton for Programming and Data science.
 
 
-## **HOW TO RUN THE WEB APP** 
+## **How to run the web app** 
 
 Enter the flask_project directory with:
 ```
